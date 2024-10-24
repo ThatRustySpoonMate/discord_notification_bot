@@ -1,8 +1,6 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
-import discord
-import uvicorn
-import asyncio
+import discord, uvicorn, asyncio, sys
 from credentials import *
 
 app = FastAPI()
@@ -47,9 +45,9 @@ async def send_message(message: str, channel: str):
         print("Channel 'price-alerts' not found or is not a text channel.")
 
 
-async def start_fastapi():
+async def start_fastapi(port: int):
     # Run the FastAPI server
-    config = uvicorn.Config(app, host='0.0.0.0', port=42069)
+    config = uvicorn.Config(app, host='0.0.0.0', port=port)
     server = uvicorn.Server(config)
     await server.serve()
 
@@ -114,9 +112,15 @@ async def handle_notification_explicit(notif_data: dict, target: str):
 
 
 async def main():
+
+    if(len(sys.argv) != 2):
+        print("Usage: python main.py <port>\n")
+        sys.exit(1)
+    
+    port = int(sys.argv[1])
     # Start both the Discord bot and FastAPI server
     discord_task = asyncio.create_task(discord_client.start(token))
-    fastapi_task = asyncio.create_task(start_fastapi())
+    fastapi_task = asyncio.create_task(start_fastapi(port))
     notification_task = asyncio.create_task(serve_notification_queue())  
     
     await discord_task
