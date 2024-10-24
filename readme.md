@@ -15,11 +15,11 @@ python main.py
 
 
 
-# To integrate 
+# To integrate your services with this
 Example POST request (Python):
 ```
 notifyURL = "http://127.0.0.1:10001/price-alerts"
-message = {'handle': 'implicit', 'channel': 'price-alerts', 'data': {'https://sydneytools.com.au/product/dewalt-dcf892p2txe-18v-50ah-xr-liion-cordless-brushless-12-detent-pin-impact-wrench-combo-kit': 699.0}}
+message = {'handle': 'implicit', 'channel': 'price-alerts', 'data': {'hxxps://product_url.html': "price_here"}}
 
 response = requests.post(notifyURL, json=message)
 ```
