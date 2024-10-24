@@ -1,5 +1,9 @@
 # Config
-Create a file named 'credentials.py' in this directory and insert 'token=YOUR_TOKEN_HERE'
+Create a file named 'credentials.py' in this directory and insert 
+```
+token=YOUR_TOKEN_HERE
+```
+Note: The token is the secret that is generated on the discord developer portal when you create a new app/bot
 
 # To Install
 First pull code, then run the following commands:
