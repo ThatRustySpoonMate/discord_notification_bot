@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "discord-notification-goblin"
+version = "0.1.0"
+description = "general-purpose discord notification bot over HTTP"
+authors = ["Ethan Harris <51020883+ThatRustySpoonMate@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+requests = "^2.32.3"
+fastapi = "^0.115.3"
+uvicorn = "^0.32.0"
+discord = "^2.3.2"
+asyncio = "^3.4.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
