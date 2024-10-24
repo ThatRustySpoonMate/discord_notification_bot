@@ -104,7 +104,7 @@ async def handle_notification_explicit(notif_data: dict, target: str):
         outMsg = outMsg + "-" * 20 + "\n"
         for key,val in notif_data.items():
             outMsg = outMsg + "URL: " + key + "\n"
-            outMsg = outMsg + "Price: " + val + "\n"
+            outMsg = outMsg + "Price: " + val + "\n \n"
         outMsg = outMsg + "-" * 20 + "\n"
 
 
