@@ -20,15 +20,13 @@ PRICE_ALERTS = "price-alerts"
 @app.post("/" + PRICE_ALERTS)
 async def price_alert(request: Request):
     data = await request.json()  # Get the JSON data from the request
-    print("Received data:", data)  # Print the received data
-
-    # Create a task to send the price alert
-    #asyncio.create_task(send_price_alert("Test"))
+    #print("Received data:", data)  # Print the received data
 
     # Check if a channel has been specified, if not, default to this route's channel
     if("channel" not in data):
         data['channel'] = PRICE_ALERTS
     
+    # Queue the notification to be handled in separate task
     notificationQueue.append(data)
 
     return JSONResponse(content={"message": "Price alert received!"}, status_code=200)  # Respond with a success message
@@ -98,7 +96,6 @@ async def handle_notification_implicit(notif_data: dict, target: str):
 # Target is text channel
 # You can add to the if statement to handle the data better with known formatting here
 async def handle_notification_explicit(notif_data: dict, target: str):
-    print(f"Explicitly handling notification: {notif_data}")
     outMsg = ""
 
     if(target == PRICE_ALERTS):
