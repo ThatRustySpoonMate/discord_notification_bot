@@ -27,6 +27,6 @@ message = {'handle': 'implicit', 'channel': 'price-alerts', 'data': {'hxxps://pr
 
 response = requests.post(notifyURL, json=message)
 ```
-'handle' - OPTIONAL, selects the method that will create the message to send to discord. 'implicit' simply sends the data field into the text channel without formatting, 'explicit' will apply custom formatting based on the channel field. if not provided, will default to implicit.<br />
+'handle' - OPTIONAL, selects the method that will create the message to send to discord. 'implicit' simply sends the data field into the text channel with minimal formatting, 'explicit' will apply custom formatting based on the channel field. if not provided, will default to implicit.<br />
 'channel' - OPTIONAL, the name of the text-channel to send the notification to. If not provided, will use the slug of the POST request (without the leading '/')<br />
 'data' - REQUIRED, the fields you wish to send in a discord notification. If not provided. notification will be dropped<br />
